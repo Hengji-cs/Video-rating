@@ -4,35 +4,67 @@
   <title>视频评分系统</title>
   <style>
     body { font-family: Arial; max-width: 800px; margin: 0 auto; padding: 20px; }
-    video { width: 100%; background: #000; margin-bottom: 20px; }
-    form { border: 1px solid #ddd; padding: 15px; margin-bottom: 40px; }
+    video { width: 100%; background: #000; margin-bottom: 10px; }
+    .video-container { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+    .rating { display: flex; align-items: center; margin: 10px 0; }
+    .rating label { margin-right: 10px; }
+    #submit-all { 
+      background: #4285f4; color: white; 
+      padding: 10px 20px; border: none; border-radius: 4px;
+      font-size: 16px; cursor: pointer; 
+    }
   </style>
 </head>
 <body>
+
+<h1>视频评分系统</h1>
+<p>请为以下视频打分（1-5分），最后统一提交</p>
+
+<form id="rating-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdeecVXBJoyhCsZJACTCwjrq8dUUmHUJ-c6fjc4O1Be3IvVWQ/formResponse" method="POST">
 
   <!-- 视频1 -->
   <div class="video-container">
     <h2>视频1：浑元形意实验室</h2>
     <video controls src="https://video-rating-1308430912.cos.ap-guangzhou.myqcloud.com/ai/【P6】【AI全自动-鬼畜生成】浑元形意实验室主任马老师.mp4"></video>
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdeecVXBJoyhCsZJACTCwjrq8dUUmHUJ-c6fjc4O1Be3IvVWQ/formResponse" method="POST">
-      <input type="hidden" name="entry.123456" value="video1"> <!-- 视频ID字段 -->
-      <label>评分（1-5分）：</label>
-      <input type="number" name="entry.187263512" min="1" max="5" required> <!-- 替换为你的评分字段ID -->
-      <button type="submit">提交评分</button>
-    </form>
+    <div class="rating">
+      <label>评分：</label>
+      <input type="number" name="entry.187263512" min="1" max="5" required data-video="video1">
+      <span>分</span>
+    </div>
   </div>
 
   <!-- 视频2 -->
   <div class="video-container">
     <h2>视频2：蜘蛛侠纵横宇宙</h2>
     <video controls src="https://video-rating-1308430912.cos.ap-guangzhou.myqcloud.com/ai/【P6】【AI全自动-卡点混剪】蜘蛛侠：纵横宇宙.mp4"></video>
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdeecVXBJoyhCsZJACTCwjrq8dUUmHUJ-c6fjc4O1Be3IvVWQ/formResponse" method="POST">
-      <input type="hidden" name="entry.123456" value="video2"> <!-- 视频ID字段 -->
-      <label>评分（1-5分）：</label>
-      <input type="number" name="entry.187263512" min="1" max="5" required>
-      <button type="submit">提交评分</button>
-    </form>
+    <div class="rating">
+      <label>评分：</label>
+      <input type="number" name="entry.187263512" min="1" max="5" required data-video="video2">
+      <span>分</span>
+    </div>
   </div>
+
+  <!-- 隐藏字段：记录视频与评分的映射 -->
+  <input type="hidden" id="rating-data" name="entry.123456" value="">
+
+  <button type="submit" id="submit-all">提交所有评分</button>
+</form>
+
+<script>
+  // 表单提交前整理数据
+  document.getElementById('rating-form').addEventListener('submit', function(e) {
+    const ratings = {};
+    document.querySelectorAll('input[type="number"]').forEach(input => {
+      ratings[input.dataset.video] = input.value;
+    });
+    
+    // 将评分数据转为JSON字符串存储
+    document.getElementById('rating-data').value = JSON.stringify(ratings);
+    
+    // 可选：显示提交提示
+    alert('感谢您的评分！');
+  });
+</script>
 
 </body>
 </html>
