@@ -3,24 +3,36 @@
 <head>
   <title>视频评分系统</title>
   <style>
-    body { font-family: Arial; max-width: 800px; margin: 0 auto; }
-    video { width: 100%; background: #000; }
+    body { font-family: Arial; max-width: 800px; margin: 0 auto; padding: 20px; }
+    video { width: 100%; background: #000; margin-bottom: 20px; }
+    form { border: 1px solid #ddd; padding: 15px; margin-bottom: 40px; }
   </style>
 </head>
 <body>
-  <h1>请为以下视频打分</h1>
-  <video controls src="https://video-rating-1308430912.cos.ap-guangzhou.myqcloud.com/ai/%E3%80%90P6%E3%80%91%E3%80%90AI%E5%85%A8%E8%87%AA%E5%8A%A8-%E9%AC%BC%E7%95%9C%E7%94%9F%E6%88%90%E3%80%91%E6%B5%91%E5%85%83%E5%BD%A2%E6%84%8F%E5%AE%9E%E9%AA%8C%E5%AE%A4%E4%B8%BB%E4%BB%BB%E9%A9%AC%E8%80%81%E5%B8%88.mp4"></video>
-  <form action="https://docs.google.com/forms/d/e/1FAIpQLSdeecVXBJoyhCsZJACTCwjrq8dUUmHUJ-c6fjc4O1Be3IvVWQ/viewform?usp=dialog" method="POST">
-    <label>评分（1-5分）：</label>
-    <input type="number" name="score" min="1" max="5" required>
-    <button type="submit">提交</button>
-  </form>
-  <h1>请为以下视频打分</h1>
-  <video controls src="https://video-rating-1308430912.cos.ap-guangzhou.myqcloud.com/ai/%E3%80%90P6%E3%80%91%E3%80%90AI%E5%85%A8%E8%87%AA%E5%8A%A8-%E5%8D%A1%E7%82%B9%E6%B7%B7%E5%89%AA%E3%80%91%E8%9C%98%E8%9B%9B%E4%BE%A0%EF%BC%9A%E7%BA%B5%E6%A8%AA%E5%AE%87%E5%AE%99.mp4"></video>
-  <form action="https://docs.google.com/forms/d/e/1FAIpQLSdeecVXBJoyhCsZJACTCwjrq8dUUmHUJ-c6fjc4O1Be3IvVWQ/viewform?usp=dialog" method="POST">
-    <label>评分（1-5分）：</label>
-    <input type="number" name="score" min="1" max="5" required>
-    <button type="submit">提交</button>
-  </form>
+
+  <!-- 视频1 -->
+  <div class="video-container">
+    <h2>视频1：浑元形意实验室</h2>
+    <video controls src="https://video-rating-1308430912.cos.ap-guangzhou.myqcloud.com/ai/【P6】【AI全自动-鬼畜生成】浑元形意实验室主任马老师.mp4"></video>
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdeecVXBJoyhCsZJACTCwjrq8dUUmHUJ-c6fjc4O1Be3IvVWQ/formResponse" method="POST">
+      <input type="hidden" name="entry.123456" value="video1"> <!-- 视频ID字段 -->
+      <label>评分（1-5分）：</label>
+      <input type="number" name="entry.187263512" min="1" max="5" required> <!-- 替换为你的评分字段ID -->
+      <button type="submit">提交评分</button>
+    </form>
+  </div>
+
+  <!-- 视频2 -->
+  <div class="video-container">
+    <h2>视频2：蜘蛛侠纵横宇宙</h2>
+    <video controls src="https://video-rating-1308430912.cos.ap-guangzhou.myqcloud.com/ai/【P6】【AI全自动-卡点混剪】蜘蛛侠：纵横宇宙.mp4"></video>
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdeecVXBJoyhCsZJACTCwjrq8dUUmHUJ-c6fjc4O1Be3IvVWQ/formResponse" method="POST">
+      <input type="hidden" name="entry.123456" value="video2"> <!-- 视频ID字段 -->
+      <label>评分（1-5分）：</label>
+      <input type="number" name="entry.187263512" min="1" max="5" required>
+      <button type="submit">提交评分</button>
+    </form>
+  </div>
+
 </body>
 </html>
