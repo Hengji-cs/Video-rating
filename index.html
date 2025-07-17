@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>视频评分系统</title>
+  <style>
+    body { font-family: Arial; max-width: 800px; margin: 0 auto; }
+    video { width: 100%; background: #000; }
+  </style>
+</head>
+<body>
+  <h1>请为以下视频打分</h1>
+  <video controls src="https://video-rating-1308430912.cos.ap-guangzhou.myqcloud.com/Director/Instellar_1.mp4"></video>
+  <form action="https://docs.google.com/forms/d/e/1FAIpQLSdeecVXBJoyhCsZJACTCwjrq8dUUmHUJ-c6fjc4O1Be3IvVWQ/viewform?usp=dialog" method="POST">
+    <label>评分（1-5分）：</label>
+    <input type="number" name="score" min="1" max="5" required>
+    <button type="submit">提交</button>
+  </form>
+</body>
+</html>
